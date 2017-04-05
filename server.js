@@ -14,12 +14,12 @@ app.use(express.static(__dirname + '/public'));
 require('./app/routes')(app); // configure our routes
 
 // start app ===============================================
-// startup our app at http://localhost:8080
-//
+// startup our app 
+//at http://localhost:8080
 app.listen(port);               
 
 // shoutout to the user                     
 console.log('Running on port ' + port);
 
-// expose app           
+// expose app          
 exports = module.exports = app;
