@@ -20,12 +20,7 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-<<<<<<< HEAD
-    usertype: {
-        type: Boolean,
-        required: true
-    }
-=======
+
     city: {
         type: String,
         required: true
@@ -39,7 +34,6 @@ const UserSchema = mongoose.Schema({
         required: false
     }
 
->>>>>>> loginreg
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
@@ -53,14 +47,7 @@ module.exports.getUserByUsername = function (username, callback) {
     User.findOne(query, callback);
 }
 
-<<<<<<< HEAD
-module.exports.getRandomBusinesses = function (callback) {
-    User.aggregate([{ $sample: { size: 4 } }], function(err, res) { 
-       if(err) throw err;
-      // console.log(res);
-       callback(err,res);
-     }); 
-=======
+
 module.exports.updateUser = function (id, user, options, callback) {
     var query = { _id: id };
     var update = {
@@ -81,7 +68,6 @@ module.exports.getRandomBusinesses = function (callback) {
         if (err) throw err;
         callback(err, res);
     });
->>>>>>> loginreg
 }
 
 module.exports.addUser = function (newUser, callback) {
