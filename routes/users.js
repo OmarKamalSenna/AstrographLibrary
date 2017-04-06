@@ -68,6 +68,7 @@ router.get('/randombusinesses', (req, res) => {
         if (err) throw err;
         console.log('yesss', results);
         res.send({ results });
+        return true;
     });
 
     //  next();
@@ -78,9 +79,10 @@ router.get('/:uid', (req, res) => {
     const username = req.params.uid;
     console.log(username);
     User.getUserByUsername(username, (err, user) => {
-        if (err) throw err;
+        if (err) res.send(err);
         if (!user || user.usertype == false) {
             res.send({ success: false, msg: 'User not found' });
+            return false;
         }
         res.send({ success: true });
 

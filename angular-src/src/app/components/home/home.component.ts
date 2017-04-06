@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
     // console.log(JSON.stringify(this.retrieveService.getRandomBusinesses()));
     //     console.log(this.retrieveService.getRandomBusinesses());
     //     console.log(Array.isArray(this.retrieveService.getRandomBusinesses()));
-    console.log('eee');
     this.retrieveService.getRandomBusinesses().subscribe(businesses => { this.businesses = businesses },
       err => {
         console.log(err);

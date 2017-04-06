@@ -17,11 +17,11 @@ export class CompanyComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-   
+
   }
 
   ngOnInit() {
-     this.username = this.route.snapshot.params['username'];
+    this.username = this.route.snapshot.params['username'];
     console.log(this.username + 'wohohooo');
 
     this.authService.isCompanyProfile(this.username).subscribe(data => {
