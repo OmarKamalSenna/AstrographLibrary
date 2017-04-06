@@ -1,3 +1,21 @@
-<p>
-  dashboard works!
-</p>
+<div *ngIf="authService.isBusiness()">
+  <h2 class="page-header">YOU ARE A BUSINESS</h2>
+  <ul class="list-group">
+    <!--<li class="list-group-item">Username: {{user.username}}</li>
+      <li class="list-group-item">Email: {{user.email}}</li>-->
+    <li class="list-group-item"></li>
+
+  </ul>
+</div>
+
+
+<!--<ng-template #userBlock>-->
+ <div *ngIf="!authService.isBusiness()">
+  <h2 class="page-header">YOU ARE A USER</h2>
+  <ul class="list-group">
+    <!--<li class="list-group-item">Username: {{user.username}}</li>
+        <li class="list-group-item">Email: {{user.email}}</li>-->
+    <li class="list-group-item"></li>
+
+  </ul>
+ </div>

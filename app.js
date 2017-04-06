@@ -10,6 +10,7 @@ const users = require('./routes/users');
 const config = require('./config/database');
 
 //Connecting to database
+mongoose.Promise = global.Promise;
 mongoose.connect(config.database);
 mongoose.connection.on('connected', () => console.log('Connected to database'+config.database));
 mongoose.connection.on('error', (err) =>{

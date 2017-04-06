@@ -15,7 +15,8 @@ export class RegisterComponent implements OnInit {
   username: String;
   email: String;
   password: String;
-
+  usertype: Boolean;
+  
   constructor(
     private validateService: ValidateService,
     private flashMessage: FlashMessagesService,
@@ -32,7 +33,8 @@ export class RegisterComponent implements OnInit {
       name: this.name,
       username: this.username,
       email: this.email,
-      password: this.password
+      password: this.password,
+      usertype: this.usertype
     }
     if (!this.validateService.validateRegister(user)) {
       this.flashMessage.show('Please fill in all the fields', { cssClass: 'alert-danger', timeout: '3000' });
@@ -53,6 +55,7 @@ export class RegisterComponent implements OnInit {
         this.flashMessage.show('You are now registered and can login', { cssClass: 'alert-success', timeout: '3000' });
         this.router.navigate(['/login']);
       } else {
+        console.log(data);
         this.flashMessage.show('Something went wrong!', { cssClass: 'alert-success', timeout: '3000' });
         this.router.navigate(['/login']);
 
