@@ -64,7 +64,6 @@ module.exports.getRandomBusinesses = function (callback) {
 
     User.aggregate([{ $match: { 'usertype': true } }, { $sample: { size: 2 } }], function (err, res) {
         if (err) throw err;
-        // console.log(res);
         callback(err, res);
     });
 }

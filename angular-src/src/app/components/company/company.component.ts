@@ -24,11 +24,9 @@ export class CompanyComponent implements OnInit {
     this.username = this.route.snapshot.params['username'];
 
     this.retrieveService.getCompanyProfile(this.username).subscribe(company => {
-      console.log(company.success + 'THIS IS DATAA SUCCESS');
       if (!company.success) {
         this.router.navigate(['/']);
       }else{
-        console.log(company.user);
         this.company = company.user;
       }
     });

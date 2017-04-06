@@ -79,7 +79,6 @@ router.get('/randombusinesses', (req, res) => {
 router.get('/:uid', (req, res) => {
     // make somethings with username
     const username = req.params.uid;
-    console.log(username);
     User.getUserByUsername(username, (err, user) => {
         if (err) res.send(err);
         if (!user || user.usertype == false) {
