@@ -11,9 +11,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CompanyComponent implements OnInit {
   username: string;
-
+  company: Object;
   constructor(
-    private authService: AuthService,
+    private retrieveService: RetrieveService,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -22,13 +22,14 @@ export class CompanyComponent implements OnInit {
 
   ngOnInit() {
     this.username = this.route.snapshot.params['username'];
-    console.log(this.username + 'wohohooo');
 
-    this.authService.isCompanyProfile(this.username).subscribe(data => {
-      console.log(data.success + 'THIS IS DATAA SUCCESS');
-      if (!data.success) {
+    this.retrieveService.getCompanyProfile(this.username).subscribe(company => {
+      console.log(company.success + 'THIS IS DATAA SUCCESS');
+      if (!company.success) {
         this.router.navigate(['/']);
-
+      }else{
+        console.log(company.user);
+        this.company = company.user;
       }
     });
   }

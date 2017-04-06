@@ -16,19 +16,13 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-    // console.log(JSON.stringify(this.retrieveService.getRandomBusinesses()));
-    //     console.log(this.retrieveService.getRandomBusinesses());
-    //     console.log(Array.isArray(this.retrieveService.getRandomBusinesses()));
+
     this.retrieveService.getRandomBusinesses().subscribe(businesses => { this.businesses = businesses },
       err => {
         console.log(err);
         return false;
       });
-    console.log('eee: ' + this.businesses);
-    //   console.log(this.businesses[0]);
-    // for (var i = 0; i < this.businesses.forEach; i++) {
-    //   console.log(JSON.stringify(this.businesses));
-    // }
+
   }
 
 

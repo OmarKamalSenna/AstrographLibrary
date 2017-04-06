@@ -9,7 +9,12 @@ export class RetrieveService {
   user: any;
   constructor(private http: Http) {
   }
+  getCompanyProfile(username) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/company/' + username, { headers: headers }).map(res => res.json());
 
+  }
   getRandomBusinesses() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -17,7 +22,7 @@ export class RetrieveService {
     this.http.get('http://localhost:3000/users/randombusinesses', { headers: headers }).map(res => res.json().results);
 
     return this.http.get('http://localhost:3000/users/randombusinesses', { headers: headers }).map(res => res.json().results);
-    
+
     //console.log(this.http.get('http://localhost:3000/users/randombusinesses'));
   }
   // getUsers(): Observable<User[]> {

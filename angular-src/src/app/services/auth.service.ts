@@ -59,12 +59,7 @@ export class AuthService {
     this.user = JSON.parse(localStorage.getItem('user'));
     return this.user.usertype;
   }
-  isCompanyProfile(username) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/company/' + username, { headers: headers }).map(res => res.json());
-
-  }
+  
   logout() {
     this.authToken = null;
     this.user = null;

@@ -11,7 +11,8 @@ router.post('/register', (req, res, next) => {
         email: req.body.email,
         username: req.body.username,
         password: req.body.password,
-        usertype: req.body.usertype
+        usertype: req.body.usertype,
+        city: req.body.city
     });
     User.addUser(newUser, (err, user) => {
         if (err) {
@@ -45,7 +46,8 @@ router.post('/authenticate', (req, res, next) => {
                         name: user.name,
                         username: user.username,
                         email: user.email,
-                        usertype: user.usertype
+                        usertype: user.usertype,
+                        city: user.city
                     }
                 });
             }
@@ -66,13 +68,13 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 router.get('/randombusinesses', (req, res) => {
     User.getRandomBusinesses(function (err, results) {
         if (err) throw err;
-        console.log('yesss', results);
         res.send({ results });
         return true;
     });
 
     //  next();
 });
+
 
 router.get('/:uid', (req, res) => {
     // make somethings with username
@@ -84,7 +86,7 @@ router.get('/:uid', (req, res) => {
             res.send({ success: false, msg: 'User not found' });
             return false;
         }
-        res.send({ success: true });
+        res.send({success: true, user: user});
 
     });
 });
