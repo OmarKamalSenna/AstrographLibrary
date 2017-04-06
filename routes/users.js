@@ -57,7 +57,7 @@ router.post('/authenticate', (req, res, next) => {
             if (err) throw err;
             if (isMatch) {
                 const token = jwt.sign(user, config.secret, { expiresIn: 5000 });
-                res.json({
+                return res.json({
                     success: true,
                     token: 'JWT ' + token,
                     user: {
@@ -79,7 +79,7 @@ router.post('/authenticate', (req, res, next) => {
 
 //Profile
 router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res, next) => {
-    res.send({ user: req.user });
+    return res.send({ user: req.user });
 });
 
 //Businesses - NOT IN USERS ROUTES
@@ -99,7 +99,7 @@ router.get('/:uid', (req, res) => {
     // make somethings with username
     const username = req.params.uid;
     User.getUserByUsername(username, (err, user) => {
-        if (err) res.send(err);
+        if (err) return res.send(err);
         if (!user || user.usertype == false) {
             return res.send({ success: false, msg: 'User not found' });
         }
