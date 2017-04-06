@@ -1,29 +1,22 @@
 {
-  "name": "Mini",
+  "name": "meanauthapp",
   "version": "1.0.0",
-  "description": "Simple authentication system",
-  "main": "mini.js",
+  "description": "",
+  "main": "app.js",
   "scripts": {
-    "start": "node mini.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
   },
-  "author": "Omar Kamal",
-  "license": "ISC",
   "dependencies": {
-    "bcryptjs": "*",
-    "body-parser": "*",
-    "connect-flash": "*",
-    "cookie-parser": "^1.4.3",
     "express": "*",
-    "express-handlebars": "*",
-    "express-messages": "*",
-    "express-session": "*",
-    "express-validator": "*",
-    "mongodb": "*",
     "mongoose": "*",
-    "multer": "^1.3.0",
+    "bcryptjs": "*",
+    "cors": "*",
+    "jsonwebtoken": "*",
+    "body-parser": "*",
     "passport": "*",
-    "passport-http": "*",
-    "passport-local": "*"
-  }
+    "passport-jwt": "*"
+  },
+  "author": "Aley Eladawy",
+  "license": "ISC"
 }
