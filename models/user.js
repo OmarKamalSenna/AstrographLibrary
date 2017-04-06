@@ -16,11 +16,11 @@ const UserSchema = mongoose.Schema({
         required: true
 
     },
-    password:{
+    password: {
         type: String,
         required: true
     },
-    usertype:{
+    usertype: {
         type: Boolean,
         required: true
     }
@@ -28,28 +28,51 @@ const UserSchema = mongoose.Schema({
 
 const User = module.exports = mongoose.model('User', UserSchema);
 
-module.exports.getUserById = function(id, callback){
+module.exports.getUserById = function (id, callback) {
     User.findById(id, callback);
 }
 
-module.exports.getUserByUsername = function(username, callback){
-    const query = {username: username};
+module.exports.getUserByUsername = function (username, callback) {
+    const query = { username: username };
     User.findOne(query, callback);
 }
 
-module.exports.addUser = function(newUser, callback){
-    bcrypt.genSalt(10, (err, salt) =>{
-        bcrypt.hash(newUser.password, salt, (err, hash) =>{
-            if(err) throw err;
+module.exports.getRandomBusinesses = function (callback) {
+    //  const query = { usertype: true };
+    //    User.aggregate([{$sample: {size: 2}}], function(err, data){
+    //        if(err) throw err;
+
+    //        return data;
+    //    });
+    //   User.find();
+    //   User.findOne({_id: '58e507d9b504da233884f514'}, callback);
+    //     User.find().lean().exec(function (err, data) {
+    //         // so now, we can return all students to the screen.
+    //         if(err) throw err;
+    //          JSON.stringify(data);
+    //     });
+    // }
+
+    User.aggregate([{ $sample: { size: 4 } }], function(err, res) { 
+       if(err) throw err;
+      // console.log(res);
+       callback(err,res);
+     }); 
+}
+
+module.exports.addUser = function (newUser, callback) {
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+            if (err) throw err;
             newUser.password = hash;
             newUser.save(callback);
         });
     });
 }
 
-module.exports.comparePassword = function(candidatePassword, hashedPassword, callback){
-    bcrypt.compare(candidatePassword, hashedPassword, (err, isMatch)=>{
-        if(err) throw err;
+module.exports.comparePassword = function (candidatePassword, hashedPassword, callback) {
+    bcrypt.compare(candidatePassword, hashedPassword, (err, isMatch) => {
+        if (err) throw err;
         callback(null, isMatch);
     });
 }

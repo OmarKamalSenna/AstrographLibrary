@@ -57,8 +57,20 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 //Profile
-router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-    res.send({user: req.user});
+router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    res.send({ user: req.user });
+});
+
+//Businesses - NOT IN USERS ROUTES
+
+router.get('/randombusinesses', (req, res) => {
+     User.getRandomBusinesses(function(err, results){
+        if (err) throw err;
+         console.log('yesss',results);
+        res.send(results);
+     });
+
+  //  next();
 });
 
 

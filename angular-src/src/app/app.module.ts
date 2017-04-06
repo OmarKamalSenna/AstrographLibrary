@@ -14,6 +14,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import{RouterModule, Routes} from '@angular/router';
 
 import {AuthService} from './services/auth.service';  
+import {RetrieveService} from './services/retrieve.service';  
+
 import {AuthGuard} from './guards/auth.guard';
 import{ValidateService} from './services/validate.service';
 import{FlashMessagesModule} from 'angular2-flash-messages';
@@ -45,7 +47,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],
-  providers: [ValidateService, AuthService, AuthGuard],
+  providers: [ValidateService, AuthService, AuthGuard, RetrieveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
