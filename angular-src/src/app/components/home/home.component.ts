@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RetrieveService } from '../../services/retrieve.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-home',
@@ -15,20 +16,17 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-    // console.log(JSON.stringify(this.retrieveService.getRandomBusinesses()));
-    //     console.log(this.retrieveService.getRandomBusinesses());
-    //     console.log(Array.isArray(this.retrieveService.getRandomBusinesses()));
-    console.log('eee');
-    this.businesses = this.retrieveService.getRandomBusinesses();
-    //   console.log(this.businesses[0]);
-    this.gengen();
+
+
+    this.retrieveService.getRandomBusinesses().subscribe(businesses => { this.businesses = businesses },
+      err => {
+        console.log(err);
+        return false;
+      });
+
   }
 
-  gengen() {
-    for (var i = 0; i < this.businesses.length; i++) {
-      console.log(this.businesses);
-    }
-  }
+
 
   generateArray(obj) {
     return Object.keys(obj).map((key) => { return obj[key] });

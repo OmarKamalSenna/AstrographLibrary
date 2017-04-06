@@ -6,5 +6,23 @@
     </span>
   </div>
 </div>
+<br>
 <div class="col-xs-12 col-sm-4 text-center">
 </div>
+<div *ngIf="businesses">
+  <h1>Welcome to {{busniess.name}}!</h1>
+  <ul>
+    <li *ngFor="let business of businesses" >
+
+      Business Name: {{business.name}}<br> 
+      Business Username: {{business.username}}<br> 
+      Business E-mail: {{business.email}}<br>
+      
+      <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/company', business.username]">Check {{business.name}} out!</a>
+
+      <br><br>
+    </li>
+
+  </ul>
+</div>
+

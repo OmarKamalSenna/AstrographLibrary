@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const config = require('../config/database');
 var checkUser = null;
+
 //Register
 router.post('/register', (req, res, next) => {
     let newUser = new User({
@@ -39,6 +40,7 @@ router.post('/register', (req, res, next) => {
 
 
 
+
 //Authenticate
 router.post('/authenticate', (req, res, next) => {
     const username = req.body.username;
@@ -61,7 +63,8 @@ router.post('/authenticate', (req, res, next) => {
                         name: user.name,
                         username: user.username,
                         email: user.email,
-                        usertype: user.usertype
+                        usertype: user.usertype,
+                        city: user.city
                     }
                 });
             }
@@ -80,6 +83,7 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 //Businesses - NOT IN USERS ROUTES
 
 router.get('/randombusinesses', (req, res) => {
+<<<<<<< HEAD
      User.getRandomBusinesses(function(err, results){
         if (err) throw err;
          console.log('yesss',results);
@@ -92,3 +96,36 @@ router.get('/randombusinesses', (req, res) => {
 
 
 module.exports = router;
+=======
+    User.getRandomBusinesses(function (err, results) {
+        if (err) throw err;
+        res.send({ results });
+        return true;
+    });
+
+    //  next();
+});
+
+
+router.get('/:uid', (req, res) => {
+    // make somethings with username
+    const username = req.params.uid;
+    User.getUserByUsername(username, (err, user) => {
+        if (err) res.send(err);
+        if (!user || user.usertype == false) {
+            res.send({ success: false, msg: 'User not found' });
+            return false;
+        }
+        res.send({success: true, user: user});
+
+    });
+});
+
+// router.get('/:uid', (req,res)=>{
+//     const username = req.params.uid;
+//     res.send('UID: '+username);
+// })
+
+module.exports = router;
+
+>>>>>>> loginreg
