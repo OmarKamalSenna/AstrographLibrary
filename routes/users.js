@@ -64,15 +64,33 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 //Businesses - NOT IN USERS ROUTES
 
 router.get('/randombusinesses', (req, res) => {
-     User.getRandomBusinesses(function(err, results){
+    User.getRandomBusinesses(function (err, results) {
         if (err) throw err;
-         console.log('yesss',results);
-        res.send({results});
-     });
+        console.log('yesss', results);
+        res.send({ results });
+    });
 
-  //  next();
+    //  next();
 });
 
+router.get('/:uid', (req, res) => {
+    // make somethings with username
+    const username = req.params.uid;
+    console.log(username);
+    User.getUserByUsername(username, (err, user) => {
+        if (err) throw err;
+        if (!user || user.usertype == false) {
+            res.send({ success: false, msg: 'User not found' });
+        }
+        res.send({ success: true });
 
+    });
+});
+
+// router.get('/:uid', (req,res)=>{
+//     const username = req.params.uid;
+//     res.send('UID: '+username);
+// })
 
 module.exports = router;
+

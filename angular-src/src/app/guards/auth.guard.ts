@@ -20,4 +20,15 @@ export class AuthGuard implements CanActivate{
 
 
     }
+
+    // //   isCompanyProfile(){
+    // //     if(this.authService.isCompanyProfile(router.params.username)){
+    // //         return true;
+    // //     }else{
+    // //         this.router.navigate(['/login']);
+    // //         return false;
+    // //     }
+
+
+    // }
 }

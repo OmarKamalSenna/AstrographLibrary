@@ -20,6 +20,8 @@ mongoose.connection.on('error', (err) =>{
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/users',users);
+app.use('/company',users);
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());

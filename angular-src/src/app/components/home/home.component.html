@@ -6,13 +6,15 @@
 <div *ngIf="businesses">
   <h1>YAY</h1>
   <ul>
-    <li *ngFor="let business of businesses">
+    <li *ngFor="let business of businesses" [routerLink]="['/company', business.username]">
 
       Business Name: {{business.name}}<br> 
       Business Username: {{business.username}}<br> 
-      Business E-mail: {{business.email}}<br><br>
+      Business E-mail: {{business.email}}<br>
+      Type: {{business.usertype}}<br>
+      <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/']">Check {{business.name}} out!</a>
 
-
+      <br><br>
     </li>
 
   </ul>

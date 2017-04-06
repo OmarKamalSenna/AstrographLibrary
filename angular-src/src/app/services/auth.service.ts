@@ -5,13 +5,13 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
-  
- 
+
+
   authToken: any;
   user: any;
 
   constructor(private http: Http) {
-   }
+  }
 
   registerUser(user) {
     let headers = new Headers();
@@ -58,6 +58,12 @@ export class AuthService {
   isBusiness() {
     this.user = JSON.parse(localStorage.getItem('user'));
     return this.user.usertype;
+  }
+  isCompanyProfile(username) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/company/' + username, { headers: headers }).map(res => res.json());
+
   }
   logout() {
     this.authToken = null;
