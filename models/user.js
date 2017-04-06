@@ -38,21 +38,6 @@ module.exports.getUserByUsername = function (username, callback) {
 }
 
 module.exports.getRandomBusinesses = function (callback) {
-    //  const query = { usertype: true };
-    //    User.aggregate([{$sample: {size: 2}}], function(err, data){
-    //        if(err) throw err;
-
-    //        return data;
-    //    });
-    //   User.find();
-    //   User.findOne({_id: '58e507d9b504da233884f514'}, callback);
-    //     User.find().lean().exec(function (err, data) {
-    //         // so now, we can return all students to the screen.
-    //         if(err) throw err;
-    //          JSON.stringify(data);
-    //     });
-    // }
-
     User.aggregate([{ $sample: { size: 4 } }], function(err, res) { 
        if(err) throw err;
       // console.log(res);
