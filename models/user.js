@@ -20,10 +20,19 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    city: {
+        type: String,
+        required: true
+    },
     usertype: {
         type: Boolean,
         required: true
+    },
+    companyId:{
+        type: Number,
+        required: false
     }
+
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
@@ -36,6 +45,19 @@ module.exports.getUserByUsername = function (username, callback) {
     const query = { username: username };
     User.findOne(query, callback);
 }
+
+module.exports.updateUser = function (id, user, options, callback) {
+    var query = { _id: id };
+    var update = {
+        name: user.name,
+        type: user.type,
+        provider: user.provider,
+        price: user.price
+
+    }
+    Event.findOneAndUpdate(query, update, options, callback);
+}
+
 
 module.exports.getRandomBusinesses = function (callback) {
 
