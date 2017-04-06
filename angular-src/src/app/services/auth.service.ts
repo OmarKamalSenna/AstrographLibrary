@@ -5,22 +5,13 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
-<<<<<<< HEAD
-  
- 
-=======
 
-
->>>>>>> loginreg
   authToken: any;
   user: any;
 
   constructor(private http: Http) {
-<<<<<<< HEAD
-   }
-=======
+
   }
->>>>>>> loginreg
 
   registerUser(user) {
     let headers = new Headers();

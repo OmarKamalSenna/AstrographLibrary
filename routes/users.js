@@ -16,26 +16,28 @@ router.post('/register', (req, res, next) => {
         usertype: req.body.usertype
     });
     User.getUserByUsername(newUser.username, (err, user) => {
-     
+
         if (!user) {
-            checkUser=false;
+            checkUser = false;
             return res.json({ success: false, msg: 'User not found' });
         }
     });
 
-   if(checkUser!=false){
+    if (checkUser != false) {
         User.addUser(newUser, (err, user) => {
-        if (err) {
+            if (err) {
 
-            res.json({ success: false, msg: `Failed to register user` });
-        } else {
-            console.log("eshta 3aleena");
-            res.json({ success: true, msg: `User registered successfully!` });
-        }
-    });
-   }else {
-       console.log("no no no");
-   }
+                res.json({ success: false, msg: `Failed to register user` });
+                return false;
+            } else {
+                console.log("eshta 3aleena");
+                res.json({ success: true, msg: `User registered successfully!` });
+                return true;
+            }
+        });
+    } else {
+        console.log("no no no");
+    }
 });
 
 
@@ -83,20 +85,6 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 //Businesses - NOT IN USERS ROUTES
 
 router.get('/randombusinesses', (req, res) => {
-<<<<<<< HEAD
-     User.getRandomBusinesses(function(err, results){
-        if (err) throw err;
-         console.log('yesss',results);
-        res.send(results);
-     });
-
-  //  next();
-});
-
-
-
-module.exports = router;
-=======
     User.getRandomBusinesses(function (err, results) {
         if (err) throw err;
         res.send({ results });
@@ -113,19 +101,13 @@ router.get('/:uid', (req, res) => {
     User.getUserByUsername(username, (err, user) => {
         if (err) res.send(err);
         if (!user || user.usertype == false) {
-            res.send({ success: false, msg: 'User not found' });
-            return false;
+            return res.send({ success: false, msg: 'User not found' });
         }
-        res.send({success: true, user: user});
+        return res.send({ success: true, user: user });
 
     });
 });
 
-// router.get('/:uid', (req,res)=>{
-//     const username = req.params.uid;
-//     res.send('UID: '+username);
-// })
 
 module.exports = router;
 
->>>>>>> loginreg
