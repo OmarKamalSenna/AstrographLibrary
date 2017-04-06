@@ -4,6 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const config = require('../config/database');
+var checkUser = null;
 //Register
 router.post('/register', (req, res, next) => {
     let newUser = new User({
@@ -13,13 +14,27 @@ router.post('/register', (req, res, next) => {
         password: req.body.password,
         usertype: req.body.usertype
     });
-    User.addUser(newUser, (err, user) => {
+    User.getUserByUsername(newUser.username, (err, user) => {
+     
+        if (!user) {
+            checkUser=false;
+            return res.json({ success: false, msg: 'User not found' });
+        }
+    });
+
+   if(checkUser!=false){
+        User.addUser(newUser, (err, user) => {
         if (err) {
+
             res.json({ success: false, msg: `Failed to register user` });
         } else {
+            console.log("eshta 3aleena");
             res.json({ success: true, msg: `User registered successfully!` });
         }
     });
+   }else {
+       console.log("no no no");
+   }
 });
 
 
