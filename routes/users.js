@@ -67,7 +67,7 @@ router.get('/randombusinesses', (req, res) => {
      User.getRandomBusinesses(function(err, results){
         if (err) throw err;
          console.log('yesss',results);
-        res.send(results);
+        res.send({results});
      });
 
   //  next();

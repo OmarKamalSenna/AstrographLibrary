@@ -1,28 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
 @Injectable()
 export class RetrieveService {
 
   user: any;
-
   constructor(private http: Http) {
   }
 
   getRandomBusinesses() {
-    console.log(this.http.get('http://localhost:3000/users/randombusinesses'));
     let headers = new Headers();
-    return this.http.get('http://localhost:3000/users/profile', { headers: headers })
-      .map(res => res.json());
-    // this.http.get('http://localhost:3000/users/randombusinesses', function (err, results) {
-    //   if (err) {
-    //   console.log(err);
-    //   }
-    //  console.log('rrrr',results);
-    //   return results;
-    // });
+    headers.append('Content-Type', 'application/json');
+    // console.log(JSON.stringify(this.http.get('http://localhost:3000/users/randombusinesses', { headers: headers }).map(res => res.json().aley)));
+    this.http.get('http://localhost:3000/users/randombusinesses', { headers: headers }).map(res => res.json().results);
+
+    return this.http.get('http://localhost:3000/users/randombusinesses', { headers: headers }).map(res => res.json().results);
+    
+    //console.log(this.http.get('http://localhost:3000/users/randombusinesses'));
   }
+  // getUsers(): Observable<User[]> {
+  //   return this.http.get(this.URL)
+  //     .map((response: Response) => response.json())
+  //     .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  // }
+
+  //return this.http.get('http://localhost:3000/users/randombusinesses');
+  // this.http.get('http://localhost:3000/users/randombusinesses', function (err, results) {
+  //   if (err) {
+  //   console.log(err);
+  //   }
+  //  console.log('rrrr',results);
+  //   return results;
+  // });
   // private createObservable(data: any): Observable<any> {
   //     return Observable.create((observer: Observer<any>) => {
   //       observer.next(data);
