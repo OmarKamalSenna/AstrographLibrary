@@ -65,7 +65,7 @@ module.exports.updateUser = function (id, user, options, callback) {
 
 module.exports.getRandomBusinesses = function (callback) {
     
-    User.aggregate([{ $match: { 'usertype': true } }, { $sample: { size: 2 } }], function (err, res) {
+    User.aggregate([{ $match: { 'usertype': true } }, { $sample: { size: 4 } }], function (err, res) {
         if (err) throw err;
         callback(err, res);
     });

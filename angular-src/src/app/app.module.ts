@@ -27,8 +27,10 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'company/:username', component: CompanyComponent},
-  { path: '**', redirectTo:'' },
+  { path: 'company/:username', component: CompanyComponent },
+  { path: '', component: HomeComponent },
+
+  { path: '**', redirectTo: '' },
 
 ];
 
