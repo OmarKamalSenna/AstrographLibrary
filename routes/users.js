@@ -91,11 +91,12 @@ router.get('/:uid', (req, res) => {
     // make somethings with username
     const username = req.params.uid;
     User.getUserByUsername(username, (err, user) => {
-        if (err) return res.send(err);
+        if (err) res.send(err);
         if (!user || user.usertype == false) {
-            return res.send({ success: false, msg: 'User not found' });
+            res.send({ success: false, msg: 'User not found' });
+            return false;
         }
-        return res.send({ success: true, user: user });
+        res.send({success: true, user: user});
 
     });
 });
