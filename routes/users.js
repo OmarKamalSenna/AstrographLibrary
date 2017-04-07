@@ -90,10 +90,6 @@ router.get('/:uid', (req, res) => {
     });
 });
 
-// router.get('/:uid', (req,res)=>{
-//     const username = req.params.uid;
-//     res.send('UID: '+username);
-// })
 
 module.exports = router;
 
