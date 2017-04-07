@@ -23,13 +23,12 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { CompanyComponent } from './components/company/company.component';
 const appRoutes: Routes = [
 
-  { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'company/:username', component: CompanyComponent}
-
+  { path: 'company/:username', component: CompanyComponent},
+  { path: '**', redirectTo:'' },
 
 ];
 

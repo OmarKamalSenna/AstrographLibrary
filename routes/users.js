@@ -13,33 +13,24 @@ router.post('/register', (req, res, next) => {
         email: req.body.email,
         username: req.body.username,
         password: req.body.password,
-        usertype: req.body.usertype
+        usertype: req.body.usertype,
+        city: req.body.city,
+        companyid: req.body.companyid
     });
-    User.getUserByUsername(newUser.username, (err, user) => {
 
-        if (!user) {
-            checkUser = false;
-            return res.json({ success: false, msg: 'User not found' });
-        }
-    });
 
     if (checkUser != false) {
         User.addUser(newUser, (err, user) => {
             if (err) {
-
-                res.json({ success: false, msg: `Failed to register user` });
-                return false;
+                res.json({ success: false, msg: 'Failed to register user' });
             } else {
-                console.log("eshta 3aleena");
-                res.json({ success: true, msg: `User registered successfully!` });
-                return true;
+                res.json({ success: true, msg: 'User registered' });
             }
         });
     } else {
         console.log("no no no");
     }
 });
-
 
 
 
@@ -66,7 +57,8 @@ router.post('/authenticate', (req, res, next) => {
                         username: user.username,
                         email: user.email,
                         usertype: user.usertype,
-                        city: user.city
+                        city: user.city,
+                        companyid: user.companyid
                     }
                 });
             }

@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('*', (req, res) =>{
-    res.sendFile(path.join(__dirname, 'public/index.html'));
+    res.sendFile(path.join(__dirname, 'public/404.html'));
 });
 app.listen(port, () =>{
     console.log('Server started on post'+port);

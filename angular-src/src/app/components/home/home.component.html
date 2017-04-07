@@ -1,17 +1,7 @@
-<div class="col-xs-12 col-sm-8">
-  <div class="input-group">
-    <input type="text" class="form-control" ng-model="searchText">
-    <span class="input-group-btn">
-      <button class="btn btn-default" type="button">Go</button>
-    </span>
-  </div>
-</div>
-<br>
-<div class="col-xs-12 col-sm-4 text-center">
-</div>
+
 <div *ngIf="businesses">
-  <h1>Welcome to {{business.name}}!</h1>
   <ul>
+  <br><h1>Featured Providers: </h1>
     <li *ngFor="let business of businesses" >
 
       Business Name: {{business.name}}<br> 

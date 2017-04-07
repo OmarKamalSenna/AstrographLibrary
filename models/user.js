@@ -5,7 +5,8 @@ const config = require('../config/database');
 //El schema
 const UserSchema = mongoose.Schema({
     name: {
-        type: String
+        type: String,
+        required: true
     },
     email: {
         type: String,
@@ -29,8 +30,9 @@ const UserSchema = mongoose.Schema({
         type: Boolean,
         required: true
     },
-    companyId:{
-        type: Number,
+
+    companyid: {
+        type: String,
         required: false
     }
 
@@ -52,9 +54,9 @@ module.exports.updateUser = function (id, user, options, callback) {
     var query = { _id: id };
     var update = {
         name: user.name,
-        type: user.type,
-        provider: user.provider,
-        price: user.price
+        city: user.city,
+        email: user.email
+
 
     }
     Event.findOneAndUpdate(query, update, options, callback);
