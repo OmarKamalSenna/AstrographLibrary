@@ -26,10 +26,4 @@ export class HomeComponent implements OnInit {
 
   }
 
-
-
-  generateArray(obj) {
-    return Object.keys(obj).map((key) => { return obj[key] });
-  }
-
 }
