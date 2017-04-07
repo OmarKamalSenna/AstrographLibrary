@@ -1,7 +1,10 @@
 node_modules
 angular-src/node_modules
 angular-src/.angular-cli.json.swp
+<<<<<<< HEAD
 angular-src/.angular-cli.json.swp
+=======
+>>>>>>> loginreg
 angular-src/.angular-cli_LOCAL_11132.json.swp
 angular-src/.angular-cli_REMOTE_11132.json.swp
 .DS_Store
