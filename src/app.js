@@ -6,6 +6,7 @@ import Database from './persistence/db';
 import api from './routes/api';
 import config from './constants/config';
 
+//test
 // DUMMY DATA FOR TESTING
 import businesses from '../test/examples/businesses.json';
 import clients from '../test/examples/clients.json';
