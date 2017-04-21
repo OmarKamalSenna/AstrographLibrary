@@ -5,8 +5,9 @@ import morgan from 'morgan';
 import Database from './persistence/db';
 import api from './routes/api';
 import config from './constants/config';
+import stripePackage from 'stripe';
+const stripe = stripePackage('sk_test_z9Ed5biPdzoGepaT5WBeAcFp');
 
-//test
 // DUMMY DATA FOR TESTING
 import businesses from '../test/examples/businesses.json';
 import clients from '../test/examples/clients.json';

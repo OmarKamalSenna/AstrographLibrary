@@ -1,11 +1,11 @@
 import { Router } from 'express';
-var stripe = require("stripe")(sk_test_z9Ed5biPdzoGepaT5WBeAcFp);
 import authenticationController from './controllers/authentication';
 import businessesController from './controllers/businesses';
 import businessRegistrationsController from './controllers/businessRegistrations';
 import activitiesController from './controllers/activities';
 import activityBookingsController from './controllers/activityBookings';
 import activityTypesController from './controllers/activityTypes';
+import paymentMethodController from './controllers/paymentMethod';
 
 export default ({ db }) => {
   const api = Router();
@@ -28,9 +28,8 @@ export default ({ db }) => {
   /** Activity Types & Activity Type Addition Requests */
   activityTypesController({ api, db });
 
-
   /**payment*/
-  paymentMethod({api,db});
+  paymentMethodController({api,db});
 
   return api;
 };
