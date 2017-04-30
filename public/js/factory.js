@@ -1,6 +1,6 @@
 App.factory('factory', function($http, $location) {
 
-  var api = 'http://localhost:8080/api';
+  var api = 'https://astrograph-library.herokuapp.com/api';
   var token = null;
   var isAdmin = null;
 
