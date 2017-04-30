@@ -45,4 +45,16 @@ export default ({ api, db }) => {
         res.status(error.status).json({ error: error.message, data: null })
       );
   });
+
+  /** Get user profile (for clients & admins) */
+
+  api.get('/profile', (req, res) => {
+    jwt
+      .verify(req)
+      .then((token) => db.getUserByUsername(token.username))
+      .then(user => res.status(201).json({ error: null, data: user }))
+      .catch(error =>
+        res.status(error.status).json({ error: error.message, data: null })
+      );
+  });
 };

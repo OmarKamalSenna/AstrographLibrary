@@ -1,1 +1,1 @@
-App = angular.module('AstrographLibrary', ['ngRoute', 'userRegistration']);
+App = angular.module('AstrographLibrary', ['ngRoute']);

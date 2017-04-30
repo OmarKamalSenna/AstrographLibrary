@@ -2,13 +2,13 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import http from 'http';
 import morgan from 'morgan';
-import stripePackage from 'stripe';
+// import stripePackage from 'stripe';
 
 import Database from './src/persistence/db';
 import api from './src//routes/api';
 import config from './src/constants/config';
 
-const stripe = stripePackage('sk_test_z9Ed5biPdzoGepaT5WBeAcFp');
+// const stripe = stripePackage('sk_test_z9Ed5biPdzoGepaT5WBeAcFp');
 
 const app = express();
 app.server = http.createServer(app);

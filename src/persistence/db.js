@@ -40,7 +40,6 @@ export default class Database {
         .exec()
         .then(user => {
           if (_.isEmpty(user)) reject(errors.USER_NOT_FOUND);
-
           resolve(user);
         })
         .catch(err => reject(errors.INTERNAL_SERVER_ERROR));

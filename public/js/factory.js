@@ -1,30 +1,9 @@
 App.factory('factory', function($http, $location) {
-  var username = 'john.doe';
 
   var token = null;
+  var isAdmin = null;
 
   return {
-    /** All these functions can be called from all controllers 
-    */
-
-    /** e.g.
-     * 
-     * factory.setUsername('jane.doe') 
-     */
-
-    /** e.g.
-     * 
-     * factory.getFries()
-     * .then(function(response) {
-     *  
-     * })
-     * .catch(function(response) {
-     * 
-     * });
-    */
-
-    ////////////////
-
     login: function(credentials) {
       return $http({
         method: 'POST',
@@ -33,43 +12,38 @@ App.factory('factory', function($http, $location) {
       });
     },
 
-    setToken: function(newToken) {
-      token = newToken;
-    },
-
-    getActivities: function() {
+    getProfile: function() {
       return $http({
         method: 'GET',
-        url: 'http://localhost:8080/api/activities',
+        url: 'http://localhost:8080/api/profile',
         headers: {
           'x-auth-token': token
         }
       });
     },
 
-    //////////////////
-
-    getUsername: function() {
-      return username;
+    isVisitor: function() {
+      return !token;
     },
 
-    setUsername: function(newUsername) {
-      username = newUsername;
+    setToken: function(newToken) {
+      token = newToken;
     },
 
-    getFries: function() {
-      return $http({
-        method: 'GET',
-        url: 'http://localhost:8080/api/fries'
-      });
+    setAdmin: function() {
+      isAdmin = true;
     },
 
-    createRecipe: function(body) {
-      return $http({
-        method: 'POST',
-        url: 'http://localhost:8080/api/recipe',
-        data: JSON.stringify(body)
-      });
+    setClient: function() {
+      isAdmin = false;
+    },
+
+    isAdmin: function() {
+      return isAdmin;
+    },
+
+    isClient: function() {
+      return !isAdmin;
     }
   };
 });
