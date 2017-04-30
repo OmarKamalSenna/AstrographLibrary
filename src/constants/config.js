@@ -3,7 +3,7 @@ export default {
     port: 8080,
   },
   database: {
-    uri: 'mongodb://localhost:27017/test-db',
+    uri: 'mongodb://localhost:27017/astrograph',
     reseed: true,
   },
   auth: {

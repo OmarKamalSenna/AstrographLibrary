@@ -1,5 +1,6 @@
 App.factory('factory', function($http, $location) {
 
+  var api = 'http://localhost:8080/api';
   var token = null;
   var isAdmin = null;
 
@@ -7,7 +8,7 @@ App.factory('factory', function($http, $location) {
     login: function(credentials) {
       return $http({
         method: 'POST',
-        url: 'http://localhost:8080/api/login',
+        url: api + '/login',
         data: JSON.stringify(credentials)
       });
     },
@@ -15,7 +16,7 @@ App.factory('factory', function($http, $location) {
     getProfile: function() {
       return $http({
         method: 'GET',
-        url: 'http://localhost:8080/api/profile',
+        url: api + '/profile',
         headers: {
           'x-auth-token': token
         }
