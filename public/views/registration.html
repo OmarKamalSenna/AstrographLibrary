@@ -1,0 +1,60 @@
+<h1 class="page-header">User Registration</h1>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body>
+
+  <form ng-submit="register.regUser(regData);">
+    
+    <div class="w3-row w3-section">
+      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+      <div class="w3-rest">
+        <label>Username</label>
+        <input type="text" name="username" class="form-control" ng-model="register.regData.username">
+      </div>
+    </div>
+    
+     <div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-key" aria-hidden="true"></i></div>
+    <div class="w3-rest">
+        <label>Password</label>
+        <input type="password" name="password" class="form-control" ng-model="register.regData.password">
+      </div>
+    </div>
+
+    <div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+    <div class="w3-rest">
+        <label>First Name</label>
+        <input type="text" name="name.first" class="form-control" ng-model="register.regData.name.first">
+      </div>
+    </div>
+
+     <div class="w3-row w3-section">
+      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+      <div class="w3-rest">
+        <label>Last Name</label>
+        <input type="text" name="name.last" class="form-control" ng-model="register.regData.name.last">
+      </div>
+    </div>
+    
+    <div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-mobile"></i></div>
+    <div class="w3-rest">
+        <label>Mobile Phone</label>
+        <input type="text" name="mobile" class="form-control" placeholder="eg: 01223456789" ng-model="register.regData.mobile">
+      </div>
+    </div>
+    
+    <div class="w3-row w3-section">
+      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+      <div class="w3-rest">
+        <label>Email</label>
+        <input type="text" name="email" class="form-control" placeholder="valid format: local-part@domain" ng-model="register.regData.email">
+      </div>
+    </div>
+   
+    <input type="submit" class="btn btn primary" value="Register">
+  </form>
