@@ -3,7 +3,7 @@ export default {
     port: 8080,
   },
   database: {
-    uri: 'mongodb://localhost:27017/astrograph',
+    uri: 'mongodb://wafey:Goodjob123@ds127391.mlab.com:27391/astrograph',
     reseed: true,
   },
   auth: {
