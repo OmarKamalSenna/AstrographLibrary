@@ -1,7 +1,8 @@
 import { Router } from 'express';
 import authenticationController from './controllers/authentication';
 import businessesController from './controllers/businesses';
-import businessRegistrationsController from './controllers/businessRegistrations';
+import businessRegistrationsController
+  from './controllers/businessRegistrations';
 import activitiesController from './controllers/activities';
 import activityBookingsController from './controllers/activityBookings';
 import activityTypesController from './controllers/activityTypes';
@@ -28,8 +29,8 @@ export default ({ db }) => {
   /** Activity Types & Activity Type Addition Requests */
   activityTypesController({ api, db });
 
-  /**payment*/
-  paymentMethodController({api,db});
+  /** Payment */
+  paymentMethodController({ api, db });
 
   return api;
 };
