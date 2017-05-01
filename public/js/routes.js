@@ -12,20 +12,24 @@ App.config(function($routeProvider) {
       templateUrl: 'views/profile.html',
       controller: 'profileController'
     })
-    // .when('/registration', {
-    //   templateUrl: 'views/registration.html',
-    //   controller: 'regCtrl',
-    // })
-    .when('/registration/clients', {
-      templateUrl: 'views/clientRegistration.html',
-      controller: 'clientRegistrationController'
-    })
-    .when('/registration/businesses', {
-      templateUrl: 'views/businessRegistration.html',
-      controller: 'businessRegistrationController'
-    })
-    .when('/activity/add', {
+     .when('/registration', {
+       templateUrl: 'views/registration.html',
+       controller: 'registerController'
+     })
+      .when('/adminRegistration', {
+       templateUrl: 'views/adminRegistration.html',
+       controller: 'adminRegistrationController'
+     })
+      .when('/registration/businessess', {
+       templateUrl: 'views/businessRegistration.html',
+       controller: 'businessRegistrationController'
+     })
+    .when('/addActivity', {
       templateUrl: 'views/addActivity.html',
-      controller: 'addActivityController'
+      controller: 'createActivityController'
+    })
+    .when('/listActivity', {
+      templateUrl: 'views/activityList.html',
+      controller: 'activitiesListController'
     });
 });
